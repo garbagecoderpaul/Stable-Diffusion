@@ -4,7 +4,9 @@
 * Open a new terminal and execute commands below for initial install:
   * Creates a new folder with files and scripts
   * Downloads regularisation images for men and women
-  * Installs gdrive app
+  * Installs gdrive app 
+    1. requires mannual API set up for Google account
+    2. set up of gdrive for server via LM: https://github.com/glotlabs/gdrive
 ```
 git clone https://github.com/garbagecoderpaul/Stable-Diffusion.git
 cd Stable-Diffusion/
