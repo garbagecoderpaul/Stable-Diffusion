@@ -19,8 +19,8 @@ bash gdrive_instal.sh
 * get_training_sets.py
   downloads training sets from a .csv file
   the csv file should be named: "Book1.csv"
-* sdxl_preset3.json /n
-  config file
+* sdxl_preset3.json
+config file
   
 
 
