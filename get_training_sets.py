@@ -73,6 +73,7 @@ def make_dir(id):
     command = "mkdir /workspace/train_img/"+id
     return command
 
+# prepares a name of directory
 def dir(id):
     command = "/workspace/train_img/"+id
     return command
@@ -88,8 +89,11 @@ for key, value in id_dict.items():
     print(make_dir(key))
     print(gdrive(value, dir(key)))
 
+# Creates parent's directory
+os.system("mkdir /workspace/train_img/")
+
 # Run the commands
 for key, value in id_dict.items():
-    os.system(fold_dir(key))
-    os.system(gdrive(value, fold_dir(key)))
+    os.system(make_dir(key))
+    os.system(gdrive(value, dir(key)))
     print(f"Training images for {key} successfully downloaded")
