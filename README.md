@@ -17,10 +17,10 @@ bash gdrive_instal.sh
 * download_gDrive.py
   * downloads a LoRA model from Google Folder
 * get_training_sets.py
-  downloads training sets from a .csv file
-  the csv file should be named: "Book1.csv"
+  * downloads training sets from a .csv file
+  * the csv file should be named: "Book1.csv"
 * sdxl_preset3.json
-config file
+  * config file - set for men by default
   
 
 
