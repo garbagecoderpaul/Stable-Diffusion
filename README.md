@@ -15,7 +15,7 @@ bash gdrive_instal.sh
 
 ## Files
 * download_gDrive.py
-  downloads a LoRA model from Google Folder
+  * downloads a LoRA model from Google Folder
 * get_training_sets.py
   downloads training sets from a .csv file
   the csv file should be named: "Book1.csv"
