@@ -11,6 +11,9 @@ import requests
 import io
 import base64
 from PIL import Image, PngImagePlugin
+import time
+
+start_time = time.time()
 
 url = "http://127.0.0.1:3000"
 
@@ -81,3 +84,10 @@ for char_id, lora_name in char2lora_dict.items():
         count += len(response_data['images'])
 
 print(f"All {count} images have been created and saved.")
+
+# Record the end time
+end_time = time.time()
+
+# Calculate and print the execution time
+execution_time = end_time - start_time
+print(f"Execution time: {execution_time:.2f} seconds")
