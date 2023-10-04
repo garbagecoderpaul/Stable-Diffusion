@@ -20,6 +20,8 @@ bash download_women_reg_1024.sh
 ```
 
 ## Files
+* gen_imgs3.py
+  * from set of CHaracters & set of LoRAs -> Generates images
 * standart_json_lora_name3.py
   * traverse through JSON files and replaces the lora_name
 * download_gDrive.py
