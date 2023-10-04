@@ -20,6 +20,8 @@ bash download_women_reg_1024.sh
 ```
 
 ## Files
+* standart_json_lora_name3.py
+  * traverse through JSON files and replaces the lora_name
 * download_gDrive.py
   * downloads a LoRA model from Google Folder
 * get_training_sets.py
