@@ -1,8 +1,7 @@
 # Input
-    # - Folder with JSON payload files
-    # - char_id - loras in csv char2lora.csv
+    # char2lora.csv - char_id - loras in csv
     # loras in Folder
-    # JSONs in Folder
+    # JSON payloads in Folder
 # Output - Gen images
 
 import csv
@@ -18,7 +17,8 @@ url = "http://127.0.0.1:3000"
 #===========1. Prep variables
 
 #========1.1. Create a list of JSONs in the folder
-jsons_dir = '/workspace/Stable-Diffusion/jsons/'
+jsons_dir = input("Enter the path to JSONs within the server: ")
+# jsons_dir = '/workspace/Stable-Diffusion/jsons/Payloads JSON by Faction/UKR'
 
 # List all JSON files in the directory
 jsons_list = os.listdir(jsons_dir)
@@ -61,12 +61,14 @@ for char_id, lora_name in char2lora_dict.items():
 
         # Convert the modified dictionary back to JSON
         payload_json = json.dumps(payload, indent=4)
+        # print('payload:/n',payload_json)
 
         # Send the JSON payload to the API
         response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=json.loads(payload_json))
 
         # Process the API response
         response_data = response.json()
+        # print('response/n',response_data)
 
         for i, img_base64 in enumerate(response_data['images']):
             image = Image.open(io.BytesIO(base64.b64decode(img_base64.split(",", 1)[0])))
