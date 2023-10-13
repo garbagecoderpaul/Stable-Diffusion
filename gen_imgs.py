@@ -118,6 +118,7 @@ for char_id, lora_name in char2lora_dict.items():
                 # Generate a unique image name
                 unique_id = str(uuid.uuid4())[:12]
                 img_name = f'{unique_id}_{lora_name}.png'
+                # img_name = f'{unique_id}_{lora_name}_{json_file}.png'
 
                 # Save the image with appropriate metadata in the lora's directory
                 img_path = os.path.join(output_dir, lora_name, img_name)
