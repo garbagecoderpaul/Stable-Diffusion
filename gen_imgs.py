@@ -47,6 +47,11 @@ def update_weights_in_json(json_data, weight_delta):
 
     return modified_json_data
 
+# Function to extract the desired part from the path
+def extract_filename(input_string):
+    start = input_string.rfind('/') + 1
+    end = input_string.rfind('.json')
+    return input_string[start:end]
 
 #========1.1. Create a list of JSONs in the folder
 jsons_dir = input("Enter the path to JSONs within the server: ")
@@ -89,6 +94,10 @@ for char_id, lora_name in char2lora_dict.items():
         # Construct the full path to the JSON file
         json_file_path = os.path.join(jsons_dir, json_file)
 
+        # Assign a name to json file
+        json_name = extract_filename(json_file)
+        print('json_name',json_name)
+
         # Load the JSON data from the file
         with open(json_file_path, 'r') as json_file:
             payload = json.load(json_file)
@@ -116,9 +125,10 @@ for char_id, lora_name in char2lora_dict.items():
                 image = Image.open(io.BytesIO(base64.b64decode(img_base64.split(",", 1)[0])))
 
                 # Generate a unique image name
-                unique_id = str(uuid.uuid4())[:12]
-                img_name = f'{unique_id}_{lora_name}.png'
-                # img_name = f'{unique_id}_{lora_name}_{json_file}.png'
+                unique_id = str(uuid.uuid4())[:14]
+                # img_name = f'{unique_id}_{lora_name}.png'
+                img_name = f'{unique_id}_{lora_name}_{json_name}.png'
+                print('im_name', img_name)
 
                 # Save the image with appropriate metadata in the lora's directory
                 img_path = os.path.join(output_dir, lora_name, img_name)
