@@ -169,3 +169,8 @@ end_time = time.time()
 print ('training accomplished and uploaded successfully: 777777777777777')
 execution_time = end_time - start_time
 print(f"Execution training time: {execution_time:.2f} seconds")
+
+# Write logs
+log_file = 'train_loras_log.txt'
+log.write(f"All {count} loras have been trained and saved.\n")
+log.write(f"Execution time: {execution_time:.2f} seconds\n")
