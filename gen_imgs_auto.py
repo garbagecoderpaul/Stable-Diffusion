@@ -16,6 +16,7 @@ import re
 from PIL import Image, PngImagePlugin
 import time
 import uuid
+import subprocess
 
 start_time = time.time()
 
@@ -147,7 +148,7 @@ for char_id, lora_name in lora_dict.items():
 
             # Convert the modified dictionary back to JSON
             payload_json = json.dumps(mod_payload, indent=4)
-            print('payload_json', payload_json)
+            # print('payload_json', payload_json)
 
             # Send the JSON payload to the API
             response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=json.loads(payload_json))
@@ -180,3 +181,8 @@ end_time = time.time()
 # Calculate and print the execution time
 execution_time = end_time - start_time
 print(f"Execution time: {execution_time:.2f} seconds")
+
+# Write logs
+log_file = 'generate_images_log.txt'
+log.write(f"All {count} images have been created and saved.\n")
+log.write(f"Execution time: {execution_time:.2f} seconds\n")
