@@ -85,7 +85,7 @@ with open(csvfaction, newline='') as csvfile:
     csvreader = csv.reader(csvfile)
     jsons_list = [row[0] for row in csvreader]
 
-jsons_dir = '/workspace/Stable-Diffusion/jsons/Payloads'
+jsons_dir = '/workspace/Stable-Diffusion/jsons/PayLoads'
 
 # ============1.2. Lora's list
 
@@ -103,7 +103,7 @@ with open(csv_file, 'r') as file:
     for row in csv_reader:
         # Convert the row of data into a list of values
         char_id, char_name = row[0], row[2]
-        lora_name = char_id+char_name
+        lora_name = char_id+'_'+char_name
         lora_dict[char_id] = lora_name
 
 print ('lora_dict from Book2name.csv is', lora_dict)
@@ -136,7 +136,7 @@ for char_id, lora_name in lora_dict.items():
         payload["prompt"] = payload["prompt"].replace("lora_name", lora_name)
 
         # 2nd: Replace the gender
-        if gender == 'f'
+        if gender == "f":
             payload["alwayson_scripts"]["ADetailer"]["args"][1]["ad_prompt"] = payload["alwayson_scripts"]["ADetailer"]["args"][1]["ad_prompt"].replace("man", "woman")
             payload["prompt"] = payload["prompt"].replace("man", "woman")
 
@@ -147,6 +147,7 @@ for char_id, lora_name in lora_dict.items():
 
             # Convert the modified dictionary back to JSON
             payload_json = json.dumps(mod_payload, indent=4)
+            print('payload_json', payload_json)
 
             # Send the JSON payload to the API
             response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=json.loads(payload_json))
