@@ -1,5 +1,5 @@
 # Input: set of links to G Folders with prepared training images
-    # Book1.csv
+    # Book2_name.csv
 # Output: folders with images on server
 # Overview:
 # 1. dict of {id : [link, name]}
@@ -14,7 +14,7 @@ import re
 import os
 
 #===================1. dict of {id : link}
-# Replace 'your_file.csv' with the actual CSV file path
+
 csv_file = 'Book2_name.csv'
 
 # Initialize an empty dictionary to store the data
