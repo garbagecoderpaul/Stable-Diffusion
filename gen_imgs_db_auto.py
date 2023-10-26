@@ -229,7 +229,7 @@ for value in char_dict.values():
     # model_title = 'model/30_Vekselberg.safetensors [2dcce1f07b]'
     model_title, kw_list = value[3], value[1]
     # 2.2.1.===== setup ckpt & VAE
-    setup_ckpt (options_json, url, ckpt_name)
+    setup_ckpt (options_json, url, model_title)
 
     # 2.2.2.====== for each JSON: 
     for json_file in jsons_list:
