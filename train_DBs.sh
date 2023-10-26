@@ -8,8 +8,8 @@ cd /workspace/Stable-Diffusion/
 
 # Install virtual environment
 source /workspace/kohya_ss/venv/bin/activate
+# alias activate="/workspace/kohya_ss/venv/bin/activate"
 
 # Run the command
 ## Input = characters.txt
-echo '777777777777777777 all good'
 python train_DBs.py

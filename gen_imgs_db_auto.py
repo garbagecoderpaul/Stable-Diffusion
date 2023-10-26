@@ -77,7 +77,7 @@ def show_ckpt_vae(url):
     vae = options_json['sd_vae']
     print(f'Current ckpt {ckpt}, VAE {vae}')
 
-def setup_ckpt (options_json, url):
+def setup_ckpt (options_json, url, model_title):
     options_json['sd_vae'] = 'sdxl_vae.safetensors'
     options_json['sd_model_checkpoint'] = model_title
     print ('modified JSON is \n', 
@@ -160,7 +160,7 @@ with open(csvfaction, newline='') as csvfile:
     csvreader = csv.reader(csvfile)
     jsons_list = [row[0] for row in csvreader]
 
-jsons_dir = '/workspace/Stable-Diffusion/jsons/PayLoads'
+jsons_dir = '/workspace/Stable-Diffusion/jsons'
 
 # Get the latest sample of Options JSON  for API
 response_options = requests.get(url=f'{url}/sdapi/v1/options')
@@ -177,11 +177,13 @@ with open(csv_file, 'r') as file:
     csv_reader = csv.reader(file)
     for row in csv_reader:
         # Convert the row of data into a list of values
-        char_id, char_name, kw_list = row[0], row[2], row[3] 
+        char_id, char_name = row[0], row[2] 
+        # Check if the row has a fourth element
+        kw_list = row[3] if len(row) > 3 else ''  # Default value is an empty string
         ckpt_name = char_id+'_'+char_name + '.safetensors'
         char_dict[char_id] = [ckpt_name, kw_list]
 
-print ('lora_dict from Book2name.csv is', char_dict)
+print ('char_dict from Book2name.csv is', char_dict)
 
 # ============1.1. prep ckpt
 #===== 1.1.2. Refresh ckpt and show
@@ -209,7 +211,7 @@ count = 0
 for value in char_dict.values():
     ckpt_name, kw_list = value[0], value[1]
     # 2.2.1.===== setup ckpt & VAE
-    setup_ckpt (options_json, url)
+    setup_ckpt (options_json, url, ckpt_name)
 
     # 2.2.2.====== for each JSON: 
     for json_file in jsons_list:

@@ -66,16 +66,16 @@ else:
 file_path = "accelerateDB.txt"
 
 # Initialize the variable
-accelerate_string = ""
+accelerate_string = """accelerate launch --num_cpu_threads_per_process=4 "/workspace/kohya_ss/sdxl_train.py" --pretrained_model_name_or_path="/workspace/stable-diffusion-webui/models/Stable-diffusion/sd_xl_base_1.0.safetensors" --train_data_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/img" --reg_data_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/reg" --resolution="1024,1024" --output_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/model" --logging_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/log" --save_model_as=safetensors --full_bf16 --output_name="88_stolten" --lr_scheduler_num_cycles="4" --max_data_loader_n_workers="0" --learning_rate="2e-06" --lr_scheduler="constant" --train_batch_size="1" --max_train_steps="5120" --mixed_precision="bf16" --save_precision="bf16" --cache_latents --cache_latents_to_disk --optimizer_type="Adafactor" --optimizer_args scale_parameter=False relative_step=False warmup_init=False weight_decay=0.01 --max_data_loader_n_workers="0" --bucket_reso_steps=64 --gradient_checkpointing --bucket_no_upscale --noise_offset=0.0 --train_text_encoder --max_grad_norm=0.0 --block_lr 1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5"""
 
-# Read the contents of the file
-try:
-    with open(file_path, "r") as file:
-        accelerate_string = file.read()
-except FileNotFoundError:
-    print("File not found.")
-except Exception as e:
-    print("An error occurred:", str(e))
+# # Read the contents of the file
+# try:
+#     with open(file_path, "r") as file:
+#         accelerate_string = file.read()
+# except FileNotFoundError:
+#     print("File not found.")
+# except Exception as e:
+#     print("An error occurred:", str(e))
 
 print ('777777 sample string', accelerate_string)
 
@@ -144,9 +144,11 @@ for lora_name in char_list:
     print('4b: copied training images to destin folder')
 
     #============4.c run the acceleration command:
+    # os.system('source /workspace/kohya_ss/venv/bin/activate')
     command = accel_command(lora_name, accelerate_string)
+    # command = f'/bin/bash -c "source /workspace/kohya_ss/venv/bin/activate && {accel_command(lora_name, accelerate_string)}"'
     print("Performing Accelerate Command:\n", command)
-    os.system(command)
+    subprocess.run(command, shell=True)
 
 #     #============4.d upload models to G Folder
 # #   gdrive files upload --parent 1mB3koZyL35ZSgqrbcOmjVTYgt9XbGbD6 <FILENAME>
