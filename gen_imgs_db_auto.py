@@ -65,6 +65,10 @@ def extract_filename(input_string):
     end = input_string.rfind('.json')
     return input_string[start:end]
 
+# Function to extract lora_name from ckpt_name
+def get_filtered_key_name(ckpt_name):
+    return 'model_' + ckpt_name
+
 # Function to refresh the checkpoints
 def refresh_checkpoints(url):
     response = requests.get(url=f'{url}/sdapi/v1/refresh-checkpoints')
@@ -164,8 +168,8 @@ jsons_dir = '/workspace/Stable-Diffusion/jsons'
 
 # Get the latest sample of Options JSON  for API
 response_options = requests.get(url=f'{url}/sdapi/v1/options')
+print (f'response7777,{response_options}')
 options_json = response_options.json()
-print (response_options)
 
 # ============1.2. Character's table: char_id | link | char_name | kw_list
 csv_file = 'Book2_name.csv'
@@ -180,7 +184,7 @@ with open(csv_file, 'r') as file:
         char_id, char_name = row[0], row[2] 
         # Check if the row has a fourth element
         kw_list = row[3] if len(row) > 3 else ''  # Default value is an empty string
-        ckpt_name = char_id+'_'+char_name + '.safetensors'
+        ckpt_name = char_id+'_'+char_name
         char_dict[char_id] = [ckpt_name, kw_list]
 
 print ('char_dict from Book2name.csv is', char_dict)
@@ -195,6 +199,18 @@ substrings_to_remove = ["sd_xl_base_1.0.safetensors", "sd_xl_refiner_1.0.safeten
 filtered_ckpt_dict = request_and_filter_checkpoints(url, substrings_to_remove)
 print('filtered_ckpt_dict is', filtered_ckpt_dict)
 
+# =====1.1.4. Add model_name to char_dict
+# Expanding char_dict[char_id] = [ckpt_name, kw_list, lora_name, model_title]
+for char_id, values in char_dict.items():
+    ckpt_name, kw_list = values
+    lora_name = get_filtered_key_name(ckpt_name)
+    model_title = filtered_ckpt_dict.get(lora_name, None)  # Use None as default if lora_name not found
+    if model_title:
+        char_dict[char_id].extend([lora_name, model_title])
+
+# Output the expanded char_dict
+print('expanded char_dict is \n', char_dict)
+
 #==========2. Generate Images: # Ensure model_name == ckpt_name
 # # 2.1.a. Create a directory for each ckpt_name from the models Folder
 # output_dir = '/workspace/Stable-Diffusion/images/'
@@ -203,13 +219,15 @@ print('filtered_ckpt_dict is', filtered_ckpt_dict)
 
 # 2.1.b Create a directory for each ckpt_name
 output_dir = '/workspace/Stable-Diffusion/images/'
-for ckpt_name in list(char_dict.values())[0]:
+for value_list in char_dict.values():
+    ckpt_name = value_list[0]
     create_model_img_directories(output_dir, ckpt_name)
 
 #========== 2.2. Gen img's
 count = 0
 for value in char_dict.values():
-    ckpt_name, kw_list = value[0], value[1]
+    # model_title = 'model/30_Vekselberg.safetensors [2dcce1f07b]'
+    model_title, kw_list = value[3], value[1]
     # 2.2.1.===== setup ckpt & VAE
     setup_ckpt (options_json, url, ckpt_name)
 
@@ -249,7 +267,7 @@ for value in char_dict.values():
             payload_json = json.dumps(mod_payload, indent=4)
 
             print('6666666666666666======mod_prompt', mod_prompt)
-            print('payload_json', payload_json)
+            # print('payload_json', payload_json)
 
             # Send the JSON payload to the API
             response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=json.loads(payload_json))
@@ -270,9 +288,7 @@ for value in char_dict.values():
                 img_path = os.path.join(output_dir, ckpt_name, img_name)
                 image.save(img_path)
                 print(f'Image {img_name} saved')
-
                 print('77777777777777777======mod_prompt', mod_prompt)
-
                 # Write meta data
                 create_meta_json(ckpt_name, mod_payload, img_name, img_path, code_version)
 
