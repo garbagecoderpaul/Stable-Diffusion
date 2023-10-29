@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#gdrive
+bash gdrive_install.sh
+
 # Start time
 start_time=$(date +%s)
 
