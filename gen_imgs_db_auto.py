@@ -128,6 +128,7 @@ def create_meta_json(ckpt_name, payload, img_name, img_path, code_version):
 prompt_log_path = '/workspace/Stable-Diffusion/prompt_log.json'
 try:
     with open(prompt_log_path, 'r') as json_file:
+        print('777777777', json_file)
         prompt_log_dict = json.load(json_file)
 except FileNotFoundError:
     print("Error: 'prompt_log.json' not found. Please run the initial setup.")
@@ -220,6 +221,7 @@ for value in char_dict.values():
     model_title, kw_list, ckpt_name = value[3], value[1], value[0]
     # 2.2.1.===== setup ckpt & VAE
     setup_ckpt (options_json, url, model_title)
+    log_model_list.append(ckpt_name)
 
     # 2.2.2.====== for each JSON: 
     for json_file in jsons_list:
@@ -281,7 +283,6 @@ for value in char_dict.values():
                 print('77777777777777777======mod_prompt', mod_prompt)
                 # Write meta data
                 create_meta_json(ckpt_name, mod_payload, img_name, img_path, code_version)
-                log_model_list.append(ckpt_name)
 
             count += len(response_data['images'])
 
