@@ -209,7 +209,7 @@
   "negative_prompt": "behind, back, written, frame, distorted fingers, ",
   "override_settings": {},
   "override_settings_restore_afterwards": true,
-  "prompt": "ohwx man draped in regal vampire attire, stands at the entrance of his ancient, cobweb-covered castle, exuding an aura of dark elegance, colorful, full body portrait\n <lora:lora_name:1>",
+  "prompt": "ohwx man with (evil mischeveous face expression:0.7) draped in regal vampire attire, stands at the entrance of his ancient, cobweb-covered castle, exuding an aura of dark elegance, colorful, full body portrait\n <lora:lora_name:1>",
   "restore_faces": false,
   "s_churn": 0.0,
   "s_min_uncond": 0,

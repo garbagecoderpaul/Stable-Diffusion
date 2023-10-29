@@ -209,7 +209,7 @@
   "negative_prompt": "behind, back, written, frame, ",
   "override_settings": {},
   "override_settings_restore_afterwards": true,
-  "prompt": "(ohwx :0.9) man face expression \n colorful, simple, undetailed \n <lora:lora_name:1>",
+  "prompt": "(ohwx :1.2) man face expression \n colorful, simple, undetailed \n <lora:lora_name:1>",
   "restore_faces": false,
   "s_churn": 0.0,
   "s_min_uncond": 0,

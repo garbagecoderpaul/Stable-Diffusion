@@ -209,7 +209,7 @@
   "negative_prompt": "behind, back, written, frame, distorted fingers, mask, people, suit, shirt",
   "override_settings": {},
   "override_settings_restore_afterwards": true,
-  "prompt": "(ohwx:1.5) man walking a labyrinth of narrow alleyways in a sprawling city slum, surrounded by the vibrant chaos, colorful, full (body:1.3) portrait, mug, thorn (dirty:1.2) t-shirt\n  <lora:lora_name:1>",
+  "prompt": "(ohwx:1.5) man walking a labyrinth of narrow alleyways in a sprawling city slum, surrounded by the vibrant chaos, colorful, (full body:1.4) portrait, mug, thorn (dirty:1.2) t-shirt\n  <lora:lora_name:1>",
   "restore_faces": false,
   "s_churn": 0.0,
   "s_min_uncond": 0,

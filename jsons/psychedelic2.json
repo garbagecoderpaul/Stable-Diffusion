@@ -229,7 +229,7 @@
   "negative_prompt": "behind, back, written, frame, distorted fingers, suit, forest, realistic",
   "override_settings": {},
   "override_settings_restore_afterwards": true,
-  "prompt": "(psychedelic:0.5) version of photo of (ohwx man:1.2) . vibrant color, distorted visuals, swirling patterns, trippy, detailed, intricate,neutral \n <lora:lora_name:1>",
+  "prompt": "(psychedelic:0.5) version of (ohwx man:1.2) with (psychedelic eyes:1.4). vibrant color, distorted visuals, swirling patterns, trippy, detailed, intricate,neutral \n <lora:lora_name:1>",
   "resize_mode": 0,
   "restore_faces": false,
   "s_churn": 0.0,

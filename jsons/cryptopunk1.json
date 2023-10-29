@@ -4,7 +4,7 @@
       "args": [
         true,
         {
-          "ad_cfg_scale": 17,
+          "ad_cfg_scale": 12,
           "ad_checkpoint": "Use same checkpoint",
           "ad_clip_skip": 1,
           "ad_confidence": 0.3,
