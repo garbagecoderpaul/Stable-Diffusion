@@ -227,7 +227,7 @@ for value_list in char_dict.values():
 count = 0
 for value in char_dict.values():
     # model_title = 'model/30_Vekselberg.safetensors [2dcce1f07b]'
-    model_title, kw_list = value[3], value[1]
+    model_title, kw_list, ckpt_name = value[3], value[1], value[0]
     # 2.2.1.===== setup ckpt & VAE
     setup_ckpt (options_json, url, model_title)
 

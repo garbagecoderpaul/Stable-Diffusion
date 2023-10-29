@@ -1,4 +1,8 @@
-!/bin/sh
+#!/bin/bash
+
+# Start time
+start_time=$(date +%s)
+
 # images
 gdrive files upload /workspace/Stable-Diffusion/images \
 	--recursive --parent 1gIf3G4aGGCkm8spTvS24ikkvr4A4Yf_l & \
@@ -11,3 +15,11 @@ gdrive files upload /workspace/Stable-Diffusion/images \
 	# training log
 	gdrive files upload /workspace/Stable-Diffusion/train_loras_log.txt \
 	--parent 1gIf3G4aGGCkm8spTvS24ikkvr4A4Yf_l $$ fg
+
+wait
+
+# End time
+end_time=$(date +%s)
+
+# Print execution time
+echo "Total execution time: $(( end_time - start_time )) seconds."
