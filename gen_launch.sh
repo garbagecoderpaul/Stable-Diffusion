@@ -4,4 +4,4 @@ cd /workspace/stable-diffusion-webui
 /workspace/stable-diffusion-webui/webui.sh -f
 
 # Run the command
-python train_DBs.py
+python gen_imgs_db_auto.py

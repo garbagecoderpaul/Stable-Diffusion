@@ -46,17 +46,6 @@ def update_weights_in_json(json_data, weight_delta):
 
     # Convert the modified JSON string back to a dictionary
     modified_json_data = json.loads(output_string)
-    # print('modified_json_data', modified_json_data)
-
-    # Debug function
-    print('44444444444444====Start Function debugging')
-    # print('original JSON:', json_data)
-    # print('matches', matches)
-    print('modified_values', modified_values)
-    # print('output_string', output_string)
-    # print('modified JSON:', modified_json_data)
-    print('555555555555555====Finish Function debugging')
-
     return modified_json_data
 
 # Function to extract filename from JSON files
@@ -224,6 +213,7 @@ for value_list in char_dict.values():
     create_model_img_directories(output_dir, ckpt_name)
 
 #========== 2.2. Gen img's
+log_model_list = []
 count = 0
 for value in char_dict.values():
     # model_title = 'model/30_Vekselberg.safetensors [2dcce1f07b]'
@@ -266,7 +256,7 @@ for value in char_dict.values():
             # Convert the modified dictionary back to JSON
             payload_json = json.dumps(mod_payload, indent=4)
 
-            print('6666666666666666======mod_prompt', mod_prompt)
+            print('mod_prompt', mod_prompt)
             # print('payload_json', payload_json)
 
             # Send the JSON payload to the API
@@ -291,6 +281,7 @@ for value in char_dict.values():
                 print('77777777777777777======mod_prompt', mod_prompt)
                 # Write meta data
                 create_meta_json(ckpt_name, mod_payload, img_name, img_path, code_version)
+                log_model_list.append(ckpt_name)
 
             count += len(response_data['images'])
 
@@ -306,5 +297,6 @@ print(f"Execution time: {execution_time:.2f} seconds")
 # Write logs
 log_file = 'DB_gen_img_log.txt'
 with open('DB_gen_img_log.txt', 'w') as log:
+    log.write(f"List of processed models: {log_model_list} \n")
     log.write(f"All {count} images have been created and saved.\n")
     log.write(f"Execution time: {execution_time:.2f} seconds\n")
