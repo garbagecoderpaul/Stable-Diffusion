@@ -280,7 +280,7 @@ for value in char_dict.values():
                 img_path = os.path.join(output_dir, ckpt_name, img_name)
                 image.save(img_path)
                 print(f'Image {img_name} saved')
-                print('77777777777777777======mod_prompt', mod_prompt)
+                print('======mod_prompt', mod_prompt)
                 # Write meta data
                 create_meta_json(ckpt_name, mod_payload, img_name, img_path, code_version)
 
