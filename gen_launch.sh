@@ -1,7 +1,8 @@
-# Launch A111 
+# Launch A111
 cd /workspace/stable-diffusion-webui
 
-/workspace/stable-diffusion-webui/webui.sh -f
+/workspace/stable-diffusion-webui/webui.sh
+sleep 3
 
 # Run the command
 cd /workspace/Stable-Diffusion
