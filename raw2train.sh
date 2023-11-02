@@ -6,7 +6,6 @@ bash converter.sh
 # download
 wget https://huggingface.co/MonsterMMORPG/SECourses/resolve/main/yolo_v7_auto_cropper_v3.zip
 # unzip
-mkdir yolo
 unzip /workspace/Stable-Diffusion/yolo_v7_auto_cropper_v3.zip -d /workspace/Stable-Diffusion/yolo
 
 # install
