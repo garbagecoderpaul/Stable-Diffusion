@@ -139,7 +139,8 @@ for lora_name in char_list:
 
     #=============4.b move train images
     #workspace/train_img/2/train
-    train_source = '/workspace/train_img/'+ lora_name + '/train'
+    train_source = '/workspace/train_img/'+ lora_name + 'train/1024x1024'
+    # workspace/train_img/109_Belkovski/train/1024x1024
     shutil.copytree(train_source, train_dest)  # Copy train images
     print('4b: copied training images to destin folder')
 
