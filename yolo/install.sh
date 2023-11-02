@@ -13,7 +13,7 @@ source venv/bin/activate
 
 echo "Installing requirements"
 # Install packages from requirements.txt
-pip install -r requirements.txt
+pip install -r /workspace/Stable-Diffusion/yolo/requirements.txt
 
 # Show completion message
 echo "Virtual environment created and requirements installed properly"
