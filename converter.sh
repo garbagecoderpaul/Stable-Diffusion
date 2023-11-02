@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Set the DEBIAN_FRONTEND variable to noninteractive
+export DEBIAN_FRONTEND=noninteractive
+
 apt-get update
-apt-get install imagemagick
+apt-get install -y imagemagick
 echo "Y" | ./converter.sh
 
 # Specify the input folder where your image files are located
