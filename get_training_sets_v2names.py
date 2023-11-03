@@ -96,4 +96,4 @@ os.system("mkdir /workspace/train_img/")
 for key, value in id_dict.items():
     os.system(make_dir(key, value[1]))
     os.system(gdrive(value[0], dir(key, value[1])))
-    print(f"Training images for {key} successfully downloaded")
+    print(f"Training images for {key}_{value[1]} successfully downloaded")

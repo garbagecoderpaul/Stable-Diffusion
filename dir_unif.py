@@ -8,11 +8,11 @@ def rename_target_folders(root):
         subfolder_path = os.path.join(root, subfolder)
         target_folders = [f for f in os.listdir(subfolder_path) if os.path.isdir(os.path.join(subfolder_path, f))]
         for target_folder in target_folders:
-            if target_folder != "train":
+            if target_folder != "raw":
                 target_folder_path = os.path.join(subfolder_path, target_folder)
                 try:
-                    os.rename(target_folder_path, os.path.join(subfolder_path, "train"))
-                    print(f"Renamed {target_folder_path} to {os.path.join(subfolder_path, 'train')}")
+                    os.rename(target_folder_path, os.path.join(subfolder_path, "raw"))
+                    print(f"Renamed {target_folder_path} to {os.path.join(subfolder_path, 'raw')}")
                 except Exception as e:
                     print(f"Failed to rename {target_folder_path}: {e}")
 

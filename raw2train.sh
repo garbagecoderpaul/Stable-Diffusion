@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#unificate the directories
+python dir_unif.py
+
 # convert to png
 bash converter.sh
 

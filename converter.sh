@@ -1,11 +1,26 @@
 #!/bin/bash
 
-# Set the DEBIAN_FRONTEND variable to noninteractive
-export DEBIAN_FRONTEND=noninteractive
-
-apt-get update
-apt-get install -y imagemagick
-echo "Y" | ./converter.sh
+# Check if ImageMagick is installed
+if ! command -v convert &> /dev/null; then
+    echo "ImageMagick is not installed. Installing..."
+    
+    # Set the DEBIAN_FRONTEND variable to noninteractive
+    export DEBIAN_FRONTEND=noninteractive
+    
+    # Update the package repository
+    apt-get update
+    
+    # Install ImageMagick
+    apt-get install -y imagemagick
+    
+    # Check if installation was successful
+    if [ $? -eq 0 ]; then
+        echo "ImageMagick installation completed."
+    else
+        echo "Failed to install ImageMagick."
+        exit 1
+    fi
+fi
 
 # Specify the input folder where your image files are located
 input_folder="/workspace/train_img"
