@@ -27,7 +27,7 @@
           "ad_model": "face_yolov8n.pt",
           "ad_negative_prompt": "dots",
           "ad_noise_multiplier": 1,
-          "ad_prompt": "(ohwx:1.9) (fierce:0.5), (furious face expression:0.8), (scars:1.2), yellow eyes, blood on sharp (teeth:1.1)\n<lora:lora_name:1>\n",
+          "ad_prompt": "(ohwx man:2.1) (furious face expression:0.9), (scars:1.2), (pale skin:1.2) and (rotting skin:1.3). (yellow scary eyes:1.1), blood on sharp (teeth:1.2) \n <lora:lora_name:1>",
           "ad_restore_face": false,
           "ad_sampler": "Euler a",
           "ad_steps": 28,
@@ -209,7 +209,7 @@
   "negative_prompt": "behind, back, frame, people, written, suit, shirt, tie, 3d, skul, isometric, realistic",
   "override_settings": {},
   "override_settings_restore_afterwards": true,
-  "prompt": "(ohwx:1.7) turned into a zombie (sharp0.8) (teeth:1.1) in post-apocalyptic. skin is pale and (rotting:1.3). eyes are yellow. . Clothes is tattered and dirty, with (bloodstains:1.2) and rips. (ruins of buildings) and destroyed infrastructure, smoke and fire rising in the distance. \ncolorful, full body portrait\n<lora:lora_name:1>",
+  "prompt": "(ohwx:1.7) turned into a zombie (sharp:0.8) (teeth:1.1) in desolate city. (pale skin:1.2) and (rotting skin:1.3). tattered and dirty clothes, with (bloodstains:1.4), rips and wounds. (ruins of buildings:1.2) and destroyed infrastructure, smoke and fire rising in the distance. \n colorful, full body portrait \n <lora:lora_name:1>",
   "restore_faces": false,
   "s_churn": 0.0,
   "s_min_uncond": 0,
@@ -223,9 +223,10 @@
   "seed_enable_extras": true,
   "seed_resize_from_h": -1,
   "seed_resize_from_w": -1,
-  "steps": 32,
+  "steps": 50,
   "styles": [
-    "Style: Comic book"
+    "Style: Comic book",
+    "Style: Horror"
   ],
   "subseed": -1,
   "subseed_strength": 0,
