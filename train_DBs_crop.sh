@@ -12,4 +12,4 @@ source /workspace/kohya_ss/venv/bin/activate
 
 # Run the command
 ## Input = characters.txt
-python train_DBs_bucket.py
+python /workspace/Stable-Diffusion/train_DBs_bucket.py

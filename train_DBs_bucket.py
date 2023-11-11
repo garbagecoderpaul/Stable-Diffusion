@@ -66,18 +66,9 @@ else:
 file_path = "accelerateDB.txt"
 
 # Initialize the variable
-accelerate_string = """accelerate launch --num_cpu_threads_per_process=4 "/workspace/kohya_ss/sdxl_train.py" --enable_bucket --min_bucket_reso=256 --max_bucket_reso=4096 --pretrained_model_name_or_path="/workspace/stable-diffusion-webui/models/Stable-diffusion/sd_xl_base_1.0.safetensors" --train_data_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/img" --reg_data_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/reg" --resolution="1024,1024" --output_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/model" --logging_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/log" --save_model_as=safetensors --full_bf16 --output_name="88_stolten" --lr_scheduler_num_cycles="4" --max_data_loader_n_workers="0" --learning_rate="2e-06" --lr_scheduler="constant" --train_batch_size="1" --max_train_steps="5120" --mixed_precision="bf16" --save_precision="bf16" --cache_latents --cache_latents_to_disk --optimizer_type="Adafactor" --optimizer_args scale_parameter=False relative_step=False warmup_init=False weight_decay=0.01 --max_data_loader_n_workers="0" --bucket_reso_steps=64 --gradient_checkpointing --bucket_no_upscale --noise_offset=0.0 --train_text_encoder --max_grad_norm=0.0 --block_lr 1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5,1e-5"""
+accelerate_string = """accelerate launch --num_cpu_threads_per_process=4 "/workspace/kohya_ss/sdxl_train.py" --enable_bucket --min_bucket_reso=256 --max_bucket_reso=4096 --pretrained_model_name_or_path="/workspace/stable-diffusion-webui/models/Stable-diffusion/sd_xl_base_1.0.safetensors" --train_data_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/img" --reg_data_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/reg" --resolution="1024,1024" --output_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/model" --logging_dir="/workspace/stable-diffusion-webui/models/Stable-diffusion/log" --save_model_as=safetensors --full_bf16 --vae="/workspace/stable-diffusion-webui/models/VAE/SDXL_FP32_VAE.safetensors" --output_name="88_stolten" --lr_scheduler_num_cycles="8" --max_data_loader_n_workers="0" --learning_rate="1e-05" --lr_scheduler="constant" --train_batch_size="1" --max_train_steps="5120" --save_every_n_epochs="3" --mixed_precision="bf16" --save_precision="bf16" --cache_latents --cache_latents_to_disk --optimizer_type="Adafactor" --optimizer_args scale_parameter=False relative_step=False warmup_init=False weight_decay=0.01 --max_data_loader_n_workers="0" --bucket_reso_steps=64 --gradient_checkpointing --bucket_no_upscale --noise_offset=0.0 --max_grad_norm=0.0 --no_half_vae --train_text_encoder --learning_rate_te1 3e-6 --learning_rate_te2 0"""
 
-# # Read the contents of the file
-# try:
-#     with open(file_path, "r") as file:
-#         accelerate_string = file.read()
-# except FileNotFoundError:
-#     print("File not found.")
-# except Exception as e:
-#     print("An error occurred:", str(e))
-
-print ('777777 sample string', accelerate_string)
+print ('accelerate_string', accelerate_string)
 
 def accel_command(lora_name, original_string):
     # Define replacement values
