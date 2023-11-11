@@ -42,21 +42,32 @@ def prepare_gdrive_command(folderlink, input_string):
 
 #=====================2. Read folder links from CSV
 
-csv_file_path = 'folders_list.csv'
-
 # Input string with placeholders
 input_string = "gdrive files download --recursive FILEID --destination /workspace/images"
 
 # Create a list to store folder links
 folder_links = []
 
-# Read folder links from the CSV file
-with open(csv_file_path, 'r') as csvfile:
-    reader = csv.reader(csvfile)
-    for row in reader:
-        if row:
-            # Assuming each row contains a single folder link
-            folder_links.append(row[0])
+while True:
+    # Step 1: Check if "Book2_name.csv" exists in the directory
+    csv_file_path = 'folders_list.csv'
+
+    if os.path.isfile(csv_file_path):
+        # File exists, read it and count the number of rows
+        with open(csv_file_path, 'r') as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                if row:
+                    # Assuming each row contains a single folder link
+                    folder_links.append(row[0])
+
+            # Reset the file pointer to the beginning of the file
+            csvfile.seek(0)
+        break
+    else:
+        # File doesn't exist, ask the user to upload it
+        print("Please upload 'folders_list.csv' to the directory '/workspace/Stable-Diffusion/gallery' and press Enter when done.")
+        input("Press Enter to continue...")
 
 #=====================3. Download files for each folder link
 
