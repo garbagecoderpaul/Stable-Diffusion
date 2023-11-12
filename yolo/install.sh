@@ -19,7 +19,7 @@ pip install -r requirements.txt
 echo "Virtual environment created and requirements installed properly"
 
 # Pause to keep the terminal open (optional)
-read -p "Press Enter to continue..."
+# read -p "Press Enter to continue..."
 
 # Deactivate the virtual environment
 deactivate
