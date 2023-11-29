@@ -4,7 +4,7 @@
       "args": [
         true,
         {
-          "ad_cfg_scale": 12,
+          "ad_cfg_scale": 14,
           "ad_checkpoint": "Use same checkpoint",
           "ad_clip_skip": 1,
           "ad_confidence": 0.3,
@@ -206,7 +206,7 @@
   "hr_second_pass_steps": 0,
   "hr_upscaler": "Latent",
   "n_iter": 2,
-  "negative_prompt": "behind, back, written, (frame:1.3), distorted fingers, mask, people, cut body",
+  "negative_prompt": "mustaches, beard, back, written, (frame:1.3), distorted fingers, mask, people, cut body",
   "override_settings": {},
   "override_settings_restore_afterwards": true,
   "prompt": "detailed full body of a pirate (ohwx man:1.4) that survived the the wreckage of his ship. torn clothes exposing parts of body, scratch marks, epic, colorful \n <lora:lora_name:1>",

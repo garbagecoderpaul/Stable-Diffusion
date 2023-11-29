@@ -209,7 +209,7 @@
   "negative_prompt": "behind, back, written, frame, distorted fingers, mask, people, acne",
   "override_settings": {},
   "override_settings_restore_afterwards": true,
-  "prompt": "biomechanical style photo of (ohwx man:1.6) . organic meets mechanical, (alien:0.7), detailed, H.R. Giger-inspired, (colorful:1.4) \n <lora:lora_name:1>",
+  "prompt": "biomechanical (ohwx man:1.8) with wires and implants plates on the face. organic meets mechanical, (alien:0.7), futuristic,  sci-fi, detailed, (colorful:1.4) \n <lora:lora_name:1>",
   "restore_faces": false,
   "s_churn": 0.0,
   "s_min_uncond": 0,

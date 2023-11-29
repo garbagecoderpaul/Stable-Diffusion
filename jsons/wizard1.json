@@ -2,7 +2,7 @@
   "alwayson_scripts": {
     "ADetailer": {
       "args": [
-        true,
+        false,
         {
           "ad_cfg_scale": 12,
           "ad_checkpoint": "Use same checkpoint",
@@ -206,7 +206,7 @@
   "hr_second_pass_steps": 0,
   "hr_upscaler": "Latent",
   "n_iter": 1,
-  "negative_prompt": "behind, back, frame, people, acne, (distorted hands:1.1)",
+  "negative_prompt": "behind, back, frame, people, acne, superhero",
   "override_settings": {},
   "override_settings_restore_afterwards": true,
   "prompt": "(ohwx:1.3) man, surrounded by ancient tomes and candles, \n colorful, full body portrait\n <lora:lora_name:1>",

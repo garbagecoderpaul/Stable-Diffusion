@@ -209,7 +209,7 @@
   "negative_prompt": "behind, back, written, frame, glasses, people, acne",
   "override_settings": {},
   "override_settings_restore_afterwards": true,
-  "prompt": "ohwx man, with a tablet in hand, oversees the assembly of a sophisticated war robot in a futuristic robotics facility filled with robotic arms and AI systems\ncolorful, full body portrait\n<lora:lora_name:1>",
+  "prompt": "(ohwx:1.4) man, with a tablet in hand, oversees the assembly of a sophisticated war robot in a futuristic robotics facility filled with robotic arms and AI systems\ncolorful, full body portrait\n<lora:lora_name:1>",
   "restore_faces": false,
   "s_churn": 0.0,
   "s_min_uncond": 0,
