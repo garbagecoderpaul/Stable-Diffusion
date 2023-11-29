@@ -22,7 +22,7 @@ start_time = time.time()
 
 url = "http://127.0.0.1:3000"
 
-code_version = 'v.2.2'
+code_version = 'v.2.3'
 
 
 #===========1.0 Functions
@@ -60,7 +60,7 @@ def get_filtered_key_name(ckpt_name):
 
 # Function to refresh the checkpoints
 def refresh_checkpoints(url):
-    response = requests.get(url=f'{url}/sdapi/v1/refresh-checkpoints')
+    response = requests.post(url=f'{url}/sdapi/v1/refresh-checkpoints')
 
 # Function to show the current checkpoint and VAE
 def show_ckpt_vae(url):
@@ -78,10 +78,9 @@ def setup_ckpt (options_json, url, model_title):
            options_json['sd_vae'])
     # Send the JSON payload to the API to change the ckpt
     response = requests.post(url=f'{url}/sdapi/v1/options', json=options_json)
-    print('POST response', response)
+    print('POST ckpt model response', response)
     # Refresh ckpt and show updated ckpt
-    response = requests.get(url=f'{url}/sdapi/v1/refresh-checkpoints')
-    print('refreshed', response)
+    refresh_checkpoints(url)
     response = requests.get(url=f'{url}/sdapi/v1/options')
     options_json = response.json()
     print('updated current ckpt', options_json['sd_model_checkpoint'])
@@ -89,6 +88,7 @@ def setup_ckpt (options_json, url, model_title):
 # Function to create a filtered dictionary with checkpoints
 def request_and_filter_checkpoints(url, substrings_to_remove):
     response = requests.get(url=f'{url}/sdapi/v1/sd-models')
+    print('response request_and_filter_checkpoints', response)
     response_json = response.json()
     # Original list (dict) of ckpt's
     orig_ckpt_dict = {}
@@ -145,6 +145,7 @@ faction_to_csv = {
     'n': 'ntr.csv',
     'g': 'good_rus.csv',
     'c': 'cor_ukr.csv',
+    't': 'test.csv'
 }
 
 csvfaction = faction_to_csv[faction]
@@ -170,6 +171,8 @@ with open(csv_file, 'r') as file:
     # Create a CSV reader object
     csv_reader = csv.reader(file)
     for row in csv_reader:
+        # for item in row:
+        #     print ('7777item is', item)
         # Convert the row of data into a list of values
         char_id, char_name = row[0], row[2] 
         # Check if the row has a fourth element
@@ -177,7 +180,7 @@ with open(csv_file, 'r') as file:
         ckpt_name = char_id+'_'+char_name
         char_dict[char_id] = [ckpt_name, kw_list]
 
-print ('char_dict from Book2name.csv is', char_dict)
+print ('7777 char_dict from Book2name.csv is \n', char_dict)
 
 # ============1.1. prep ckpt
 #===== 1.1.2. Refresh ckpt and show
