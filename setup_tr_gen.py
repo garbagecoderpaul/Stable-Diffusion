@@ -63,12 +63,13 @@ factions = {
     'n': 'ntr.csv',
     'g': 'good_rus.csv',
     'c': 'cor_ukr.csv',
+    't': 'test.csv'
 }
-faction = input('''Enter faction \n 'r': 'rus.csv' \n 'u': 'ukr.csv' \n 'n': 'ntr.csv' \n 'g': 'good_rus.csv' \n 'c': 'cor_ukr.csv' ''').strip().lower()
+faction = input('''Enter faction \n 'r': 'rus.csv' \n 'u': 'ukr.csv' \n 'n': 'ntr.csv' \n 'g': 'good_rus.csv' \n 'c': 'cor_ukr.csv' \n 't': 'test.csv' ''').strip().lower()
 if faction in factions:
     data_dict['faction'] = faction
 else:
-    print("Invalid faction. Please enter one of the valid codes: 'r', 'u', 'n', 'g', 'c'.")
+    print("Invalid faction. Please enter one of the valid codes: 'r', 'u', 'n', 'g', 'c', 't'.")
 
 # Step 6: Write the dictionary to "prompt_log.json"
 with open('/workspace/Stable-Diffusion/prompt_log.json', 'w') as json_file:
