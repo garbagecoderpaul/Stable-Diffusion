@@ -9,7 +9,7 @@ bash converter.sh
 # download
 wget https://huggingface.co/MonsterMMORPG/SECourses/resolve/main/yolo_v7_auto_cropper_v3.zip
 # unzip
-unzip /workspace/Stable-Diffusion/yolo_v7_auto_cropper_v3.zip -d /workspace/Stable-Diffusion/yolo
+unzip /workspace/Stable-Diffusion/yolo/yolo_v7_auto_cropper_v3.zip -d /workspace/Stable-Diffusion/yolo
 
 cd /workspace/Stable-Diffusion/yolo
 
