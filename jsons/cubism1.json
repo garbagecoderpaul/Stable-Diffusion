@@ -88,73 +88,6 @@
         }
       ]
     },
-    "ControlNet": {
-      "args": [
-        {
-          "batch_images": "",
-          "control_mode": "Balanced",
-          "enabled": false,
-          "guidance_end": 1,
-          "guidance_start": 0,
-          "image": null,
-          "input_mode": "simple",
-          "is_ui": true,
-          "loopback": false,
-          "low_vram": false,
-          "model": "None",
-          "module": "none",
-          "output_dir": "",
-          "pixel_perfect": false,
-          "processor_res": 512,
-          "resize_mode": "Crop and Resize",
-          "threshold_a": 64,
-          "threshold_b": 64,
-          "weight": 1
-        },
-        {
-          "batch_images": "",
-          "control_mode": "Balanced",
-          "enabled": false,
-          "guidance_end": 1,
-          "guidance_start": 0,
-          "image": null,
-          "input_mode": "simple",
-          "is_ui": true,
-          "loopback": false,
-          "low_vram": false,
-          "model": "None",
-          "module": "none",
-          "output_dir": "",
-          "pixel_perfect": false,
-          "processor_res": 512,
-          "resize_mode": "Crop and Resize",
-          "threshold_a": 64,
-          "threshold_b": 64,
-          "weight": 1
-        },
-        {
-          "batch_images": "",
-          "control_mode": "Balanced",
-          "enabled": false,
-          "guidance_end": 1,
-          "guidance_start": 0,
-          "image": null,
-          "input_mode": "simple",
-          "is_ui": true,
-          "loopback": false,
-          "low_vram": false,
-          "model": "None",
-          "module": "none",
-          "output_dir": "",
-          "pixel_perfect": false,
-          "processor_res": 512,
-          "resize_mode": "Crop and Resize",
-          "threshold_a": 64,
-          "threshold_b": 64,
-          "weight": 1
-        }
-      ]
-    },
     "Extra options": {
       "args": []
     },
@@ -220,7 +153,7 @@
   "negative_prompt": "photo, realism, written, frame",
   "override_settings": {},
   "override_settings_restore_afterwards": true,
-  "prompt": "Portrait of (ohwx:1.7) man face expression, colorful, simple, undetailed, distorted, (cryptopunk:0.7) \n <lora:lora_name:1>",
+  "prompt": "Portrait of (ohwx:1.7) man face expression, colorful, simple, undetailed, distorted, (cryptopunk:0.3) \n <lora:lora_name:1>",
   "restore_faces": false,
   "s_churn": 0.0,
   "s_min_uncond": 0,
