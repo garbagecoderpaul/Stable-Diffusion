@@ -21,7 +21,7 @@
           "ad_inpaint_only_masked_padding": 32,
           "ad_inpaint_width": 512,
           "ad_mask_blur": 4,
-          "ad_mask_k_largest": 0,
+          "ad_mask_k_largest": 1,
           "ad_mask_max_ratio": 1,
           "ad_mask_merge_invert": "None",
           "ad_mask_min_ratio": 0,
