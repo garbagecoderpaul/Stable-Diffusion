@@ -240,16 +240,16 @@ for value in char_dict.values():
 
         # =============Modify the JSON: 
         # 1st: Remove the lora_name from the prompt
-        payload["alwayson_scripts"]["ADetailer"]["args"][1]["ad_prompt"] = payload["alwayson_scripts"]["ADetailer"]["args"][1]["ad_prompt"].replace("<lora:lora_name:1>", '')
+        payload["alwayson_scripts"]["ADetailer"]["args"][2]["ad_prompt"] = payload["alwayson_scripts"]["ADetailer"]["args"][2]["ad_prompt"].replace("<lora:lora_name:1>", '')
         payload["prompt"] = payload["prompt"].replace("<lora:lora_name:1>", '')
 
         # Add keywords
-        payload["alwayson_scripts"]["ADetailer"]["args"][1]["ad_prompt"] = payload["alwayson_scripts"]["ADetailer"]["args"][1]["ad_prompt"] + ', ' + kw_list
+        payload["alwayson_scripts"]["ADetailer"]["args"][2]["ad_prompt"] = payload["alwayson_scripts"]["ADetailer"]["args"][2]["ad_prompt"] + ', ' + kw_list
         payload["prompt"] = payload["prompt"] + ', ' + kw_list
 
         # 2nd: Replace the gender
         if gender == "f":
-            payload["alwayson_scripts"]["ADetailer"]["args"][1]["ad_prompt"] = payload["alwayson_scripts"]["ADetailer"]["args"][1]["ad_prompt"].replace("man", "woman")
+            payload["alwayson_scripts"]["ADetailer"]["args"][2]["ad_prompt"] = payload["alwayson_scripts"]["ADetailer"]["args"][2]["ad_prompt"].replace("man", "woman")
             payload["prompt"] = payload["prompt"].replace("man", "woman")
 
         # 3rd: Modify the JSON weights
@@ -262,13 +262,14 @@ for value in char_dict.values():
             payload_json = json.dumps(mod_payload, indent=4)
 
             print('mod_prompt', mod_prompt)
-            # print('payload_json', payload_json)
+            # print('payload_json\n', payload_json)
 
             # Send the JSON payload to the API
             response = requests.post(url=f'{url}/sdapi/v1/txt2img', json=json.loads(payload_json))
 
             # Process the API response
             response_data = response.json()
+            # print('7777777777response_data', response_data)
 
             for i, img_base64 in enumerate(response_data['images']):
                 image = Image.open(io.BytesIO(base64.b64decode(img_base64.split(",", 1)[0])))
